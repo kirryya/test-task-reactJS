@@ -1,21 +1,98 @@
-import React, { FC, useState } from 'react';
+import React, {FC, useState} from 'react';
 
-import { Field, Form, Formik } from 'formik';
+import {Field, Form, Formik} from 'formik';
 
 import style from '../header/styles/Header.module.css';
 
-import { FormBlockType, MyFormValues } from './types';
+import {FormBlockType} from './types';
+import {useDispatch} from "react-redux";
+import {
+  IJudicialCasesItemCompany,
+  IJudicialCasesItemPeople,
+  IJudicialCasesItemType
+} from "store/judicialCases/types";
+import {addJudicialCases} from "store/judicialCases/actions";
+
+export type InitialValueType = {
+  uid: string,
+  case_id: string,
+  plaintiff: IJudicialCasesItemType,
+  defendant: IJudicialCasesItemType,
+  start: string,
+  end: string,
+}
 
 export const FormBlock: FC<FormBlockType> = ({ setIsActive }: FormBlockType) => {
-  const initialValues: MyFormValues = { name: '', uid: '' };
+
   const [plaintiff, setPlaintiff] = useState<boolean>(false);
+  const [defendant, setDefendant] = useState<boolean>(false);
+  const dispatch = useDispatch()
+
+  const people: IJudicialCasesItemPeople = {
+    birthday: "",
+    lastname: "",
+    name: "",
+    surname: "",
+    phone: "",
+    reg_address: "",
+    res_address: "",
+    type: 0
+  }
+
+  const company: IJudicialCasesItemCompany = {
+    inn: "",
+    ogrn: "",
+    company: "",
+    legal_address: "",
+    mailing_address: "",
+    kpp: "",
+    pc: "",
+    bank: "",
+    bic: "",
+    kc: "",
+    type: 0
+  }
+
+
+
+    const initialValues: InitialValueType = {
+      uid: "",
+      case_id: "",
+      plaintiff: {
+        birthday: "",
+        lastname: "",
+        name: "",
+        surname: "",
+        phone: "",
+        reg_address: "",
+        res_address: "",
+        type: 0
+      },
+      defendant: {
+        inn: "",
+        ogrn: "",
+        company: "",
+        legal_address: "",
+        mailing_address: "",
+        kpp: "",
+        pc: "",
+        bank: "",
+        bic: "",
+        kc: "",
+        type: 0
+      },
+      start: "",
+      end: "",
+    };
+
 
   return (
     <div>
       <Formik
         initialValues={initialValues}
-        onSubmit={() => {
-          /* console.log(values); */
+        onSubmit={(values) => {
+          console.log(values)
+          dispatch(addJudicialCases(values))
           setIsActive(false);
         }}
       >
@@ -41,107 +118,109 @@ export const FormBlock: FC<FormBlockType> = ({ setIsActive }: FormBlockType) => 
                 checked={plaintiff}
                 onChange={() => {
                   setPlaintiff(prevState => !prevState);
+
                 }}
+
               />
               Юридическое лицо
             </label>
             {!plaintiff ? (
               <div>
-                <label className={style.value} htmlFor="lastname">
+                <label className={style.value} htmlFor="plaintiff.lastname">
                   Фамилия
-                  <Field type="text" id="lastname" name="lastname" />
+                  <Field type="text" id="plaintiff.lastname" name="plaintiff.lastname" />
                 </label>
-                <label className={style.value} htmlFor="name">
+                <label className={style.value} htmlFor="plaintiff.name">
                   Имя
-                  <Field type="text" id="name" name="name" />
+                  <Field type="text" id="plaintiff.name" name="plaintiff.name" />
                 </label>
-                <label className={style.value} htmlFor="surname">
+                <label className={style.value} htmlFor="plaintiff.surname">
                   Отчество
-                  <Field type="text" id="surname" name="surname" />
+                  <Field type="text" id="plaintiff.surname" name="plaintiff.surname" />
                 </label>
-                <label className={style.value} htmlFor="birthday">
+                <label className={style.value} htmlFor="plaintiff.birthday">
                   Дата рождения
-                  <Field type="data" id="birthday" name="birthday" />
+                  <Field type="date" id="plaintiff.birthday" name="plaintiff.birthday" />
                 </label>
-                <label className={style.value} htmlFor="reg_address">
+                <label className={style.value} htmlFor="plaintiff.reg_address">
                   Адрес регистрации
                   <Field
                     type="text"
-                    id="reg_address"
-                    name="reg_address"
+                    id="plaintiff.reg_address"
+                    name="plaintiff.reg_address"
                     className={style.field}
                   />
                 </label>
-                <label className={style.value} htmlFor="res_address">
+                <label className={style.value} htmlFor="plaintiff.res_address">
                   Адрес проживания
                   <Field
                     type="text"
-                    id="res_address"
-                    name="res_address"
+                    id="plaintiff.res_address"
+                    name="plaintiff.res_address"
                     className={style.field}
                   />
                 </label>
                 <label className={style.value} htmlFor="phone">
                   Телефон
-                  <Field type="text" id="phone" name="phone" />
-                </label>{' '}
+                  <Field type="text" id="plaintiff.phone" name="plaintiff.phone" />
+                </label>
               </div>
             ) : (
               <div>
-                <label className={style.value} htmlFor="inn">
+                <label className={style.value} htmlFor="plaintiff.inn">
                   ИНН
-                  <Field type="text" id="inn" name="inn" />
+                  <Field type="text" id="plaintiff.inn" name="plaintiff.inn" />
                 </label>
-                <label className={style.value} htmlFor="ogrn">
+                <label className={style.value} htmlFor="plaintiff.ogrn">
                   ОГРН
-                  <Field type="text" id="ogrn" name="ogrn" />
+                  <Field type="text" id="plaintiff.ogrn" name="plaintiff.ogrn" />
                 </label>
-                <label className={style.value} htmlFor="company">
+                <label className={style.value} htmlFor="plaintiff.company">
                   Название компании
-                  <Field type="text" id="company" name="company" />
+                  <Field type="text" id="plaintiff.company" name="plaintiff.company" />
                 </label>
-                <label className={style.value} htmlFor="legal_address">
+                <label className={style.value} htmlFor="plaintiff.legal_address">
                   Юридический адрес
                   <Field
                     type="data"
-                    id="legal_address"
-                    name="legal_address"
+                    id="plaintiff.legal_address"
+                    name="plaintiff.legal_address"
                     className={style.field}
                   />
                 </label>
-                <label className={style.value} htmlFor="legalIsMailing">
-                  <Field type="checkbox" id="legalIsMailing" name="legalIsMailing" />
+                <label className={style.value} htmlFor="plaintiff.legalIsMailing">
+                  <Field type="checkbox" id="plaintiff.legalIsMailing" name="plaintiff.legalIsMailing" />
                   Почтовый адрес совпадает
                   <br />с юридическим
                 </label>
-                <label className={style.value} htmlFor="mailing_address">
+                <label className={style.value} htmlFor="plaintiff.mailing_address">
                   Почтовый адрес
                   <Field
                     type="text"
-                    id="mailing_address"
-                    name="mailing_address"
+                    id="plaintiff.mailing_address"
+                    name="plaintiff.mailing_address"
                     className={style.field}
                   />
                 </label>
-                <label className={style.value} htmlFor="kpp">
+                <label className={style.value} htmlFor="plaintiff.kpp">
                   КПП
-                  <Field type="text" id="kpp" name="kpp" />
+                  <Field type="text" id="plaintiff.kpp" name="plaintiff.kpp" />
                 </label>
-                <label className={style.value} htmlFor="pc">
+                <label className={style.value} htmlFor="plaintiff.pc">
                   РС
-                  <Field type="text" id="pc" name="pc" />
+                  <Field type="text" id="plaintiff.pc" name="plaintiff.pc" />
                 </label>
-                <label className={style.value} htmlFor="bank">
+                <label className={style.value} htmlFor="plaintiff.bank">
                   Банк
-                  <Field type="text" id="bank" name="bank" />
+                  <Field type="text" id="plaintiff.bank" name="plaintiff.bank" />
                 </label>
-                <label className={style.value} htmlFor="bic">
+                <label className={style.value} htmlFor="plaintiff.bic">
                   БИК
-                  <Field type="text" id="bic" name="bic" />
+                  <Field type="text" id="plaintiff.bic" name="plaintiff.bic" />
                 </label>
-                <label className={style.value} htmlFor="kc">
+                <label className={style.value} htmlFor="plaintiff.kc">
                   К/с
-                  <Field type="text" id="kc" name="kc" />
+                  <Field type="text" id="plaintiff.kc" name="plaintiff.kc" />
                 </label>
               </div>
             )}
@@ -157,65 +236,113 @@ export const FormBlock: FC<FormBlockType> = ({ setIsActive }: FormBlockType) => 
               style={{ marginTop: '40px' }}
             >
               <b>Ответчик:</b>
-              <Field type="checkbox" id="defendant" name="defendant" />
+              <Field type="checkbox"
+                     id="defendant"
+                     name="defendant"
+                     checked={defendant}
+                     onChange={() => {
+                       setDefendant(prevState => !prevState);
+                     }}/>
               Юридическое лицо
             </label>
-
-            <label className={style.value} htmlFor="inn">
+            {!defendant ? (
+                    <div>
+                      <label className={style.value} htmlFor="defendant.lastname">
+                        Фамилия
+                        <Field type="text" id="defendant.lastname" name="defendant.lastname" />
+                      </label>
+                      <label className={style.value} htmlFor="defendant.name">
+                        Имя
+                        <Field type="text" id="defendant.name" name="defendant.name" />
+                      </label>
+                      <label className={style.value} htmlFor="defendant.surname">
+                        Отчество
+                        <Field type="text" id="defendant.surname" name="defendant.surname" />
+                      </label>
+                      <label className={style.value} htmlFor="defendant.birthday">
+                        Дата рождения
+                        <Field type="date" id="defendant.birthday" name="defendant.birthday" />
+                      </label>
+                      <label className={style.value} htmlFor="defendant.reg_address">
+                        Адрес регистрации
+                        <Field
+                            type="text"
+                            id="defendant.reg_address"
+                            name="defendant.reg_address"
+                            className={style.field}
+                        />
+                      </label>
+                      <label className={style.value} htmlFor="defendant.res_address">
+                        Адрес проживания
+                        <Field
+                            type="text"
+                            id="defendant.res_address"
+                            name="defendant.res_address"
+                            className={style.field}
+                        />
+                      </label>
+                      <label className={style.value} htmlFor="defendant.phone">
+                        Телефон
+                        <Field type="text" id="defendant.phone" name="defendant.phone" />
+                      </label>
+                    </div>
+                ) : ( <div>
+            <label className={style.value} htmlFor="defendant.inn">
               ИНН
-              <Field type="text" id="inn" name="inn" />
+              <Field type="text" id="defendant.inn" name="defendant.inn" />
             </label>
-            <label className={style.value} htmlFor="ogrn">
+            <label className={style.value} htmlFor="defendant.ogrn">
               ОГРН
-              <Field type="text" id="ogrn" name="ogrn" />
+              <Field type="text" id="defendant.ogrn" name="defendant.ogrn" />
             </label>
             <label className={style.value} htmlFor="company">
               Название компании
-              <Field type="text" id="company" name="company" />
+              <Field type="text" id="defendant.company" name="defendant.company" />
             </label>
             <label className={style.value} htmlFor="legal_address">
               Юридический адрес
               <Field
                 type="data"
-                id="legal_address"
-                name="legal_address"
+                id="defendant.legal_address"
+                name="defendant.legal_address"
                 className={style.field}
               />
             </label>
-            <label className={style.value} htmlFor="legalIsMailing">
-              <Field type="checkbox" id="legalIsMailing" name="legalIsMailing" />
+            <label className={style.value} htmlFor="defendant.legalIsMailing">
+              <Field type="checkbox" id="defendant.legalIsMailing" name="defendant.legalIsMailing" />
               Почтовый адрес совпадает
               <br />с юридическим
             </label>
-            <label className={style.value} htmlFor="mailing_address">
+            <label className={style.value} htmlFor="defendant.mailing_address">
               Почтовый адрес
               <Field
                 type="text"
-                id="mailing_address"
-                name="mailing_address"
+                id="defendant.mailing_address"
+                name="defendant.mailing_address"
                 className={style.field}
               />
             </label>
-            <label className={style.value} htmlFor="kpp">
+            <label className={style.value} htmlFor="defendant.kpp">
               КПП
-              <Field type="text" id="kpp" name="kpp" />
+              <Field type="text" id="defendant.kpp" name="defendant.kpp" />
             </label>
-            <label className={style.value} htmlFor="pc">
+            <label className={style.value} htmlFor="defendant.pc">
               РС
-              <Field type="text" id="pc" name="pc" />
+              <Field type="text" id="defendant.pc" name="defendant.pc" />
             </label>
-            <label className={style.value} htmlFor="bank">
+            <label className={style.value} htmlFor="defendant.bank">
               Банк
-              <Field type="text" id="bank" name="bank" />
+              <Field type="text" id="defendant.bank" name="defendant.bank" />
             </label>
-            <label className={style.value} htmlFor="bic">
+            <label className={style.value} htmlFor="defendant.bic">
               БИК
-              <Field type="text" id="bic" name="bic" />
+              <Field type="text" id="defendant.bic" name="defendant.bic" />
             </label>
-            <label className={style.value} htmlFor="kc">
+            <label className={style.value} htmlFor="defendant.kc">
               К/с
-              <Field type="text" id="kc" name="kc" />
+              <Field type="text" id="defendant.kc" name="defendant.kc" />
             </label>
+            </div>)}
             <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
               <button
                 type="button"

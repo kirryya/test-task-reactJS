@@ -1,14 +1,16 @@
 import React, { FC } from 'react';
+import { ReturnComponentType } from '../../types';
 
 import style from './styles/UniverseModal.module.css';
 import { UniverseModalWindowType } from './types';
 
-import { ReturnComponentType } from 'types';
+
 
 export const UniverseModalWindow: FC<UniverseModalWindowType> = ({
   isActive,
   setActive,
   children,
+                                                                   areaId
 }: UniverseModalWindowType): ReturnComponentType => {
   const onCloseModalWindowClick = (): void => {
     setActive(false);

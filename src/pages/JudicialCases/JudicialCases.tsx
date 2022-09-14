@@ -101,7 +101,7 @@ const JudicialCases = ({
                     Создать дело
                   </button>
 
-                  <UniverseModalWindow isActive={isActive} setActive={setIsActive}>
+                  <UniverseModalWindow isActive={isActive} setActive={setIsActive} areaId={areaId}>
                     <AddData setIsActive={setIsActive} />
                   </UniverseModalWindow>
                 </div>

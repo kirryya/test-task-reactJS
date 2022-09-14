@@ -11,7 +11,7 @@ import {
 
 
 export const AddData: FC<AddDataType> = ({
-  setIsActive,
+  setIsActive
 }: AddDataType): ReturnComponentType => {
   return (
     <div>
