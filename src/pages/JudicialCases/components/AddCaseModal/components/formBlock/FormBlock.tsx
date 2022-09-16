@@ -6,11 +6,7 @@ import style from '../header/styles/Header.module.css';
 
 import {FormBlockType} from './types';
 import {useDispatch} from "react-redux";
-import {
-  IJudicialCasesItemCompany,
-  IJudicialCasesItemPeople,
-  IJudicialCasesItemType
-} from "store/judicialCases/types";
+import {IJudicialCasesItemType} from "store/judicialCases/types";
 import {addJudicialCases} from "store/judicialCases/actions";
 
 export type InitialValueType = {
@@ -27,31 +23,6 @@ export const FormBlock: FC<FormBlockType> = ({ setIsActive }: FormBlockType) => 
   const [plaintiff, setPlaintiff] = useState<boolean>(false);
   const [defendant, setDefendant] = useState<boolean>(false);
   const dispatch = useDispatch()
-
-  const people: IJudicialCasesItemPeople = {
-    birthday: "",
-    lastname: "",
-    name: "",
-    surname: "",
-    phone: "",
-    reg_address: "",
-    res_address: "",
-    type: 0
-  }
-
-  const company: IJudicialCasesItemCompany = {
-    inn: "",
-    ogrn: "",
-    company: "",
-    legal_address: "",
-    mailing_address: "",
-    kpp: "",
-    pc: "",
-    bank: "",
-    bic: "",
-    kc: "",
-    type: 0
-  }
 
 
 
@@ -79,7 +50,7 @@ export const FormBlock: FC<FormBlockType> = ({ setIsActive }: FormBlockType) => 
         bank: "",
         bic: "",
         kc: "",
-        type: 0
+        type: 1
       },
       start: "",
       end: "",
@@ -124,7 +95,6 @@ export const FormBlock: FC<FormBlockType> = ({ setIsActive }: FormBlockType) => 
               />
               Юридическое лицо
             </label>
-            {!plaintiff ? (
               <div>
                 <label className={style.value} htmlFor="plaintiff.lastname">
                   Фамилия
@@ -165,65 +135,6 @@ export const FormBlock: FC<FormBlockType> = ({ setIsActive }: FormBlockType) => 
                   <Field type="text" id="plaintiff.phone" name="plaintiff.phone" />
                 </label>
               </div>
-            ) : (
-              <div>
-                <label className={style.value} htmlFor="plaintiff.inn">
-                  ИНН
-                  <Field type="text" id="plaintiff.inn" name="plaintiff.inn" />
-                </label>
-                <label className={style.value} htmlFor="plaintiff.ogrn">
-                  ОГРН
-                  <Field type="text" id="plaintiff.ogrn" name="plaintiff.ogrn" />
-                </label>
-                <label className={style.value} htmlFor="plaintiff.company">
-                  Название компании
-                  <Field type="text" id="plaintiff.company" name="plaintiff.company" />
-                </label>
-                <label className={style.value} htmlFor="plaintiff.legal_address">
-                  Юридический адрес
-                  <Field
-                    type="data"
-                    id="plaintiff.legal_address"
-                    name="plaintiff.legal_address"
-                    className={style.field}
-                  />
-                </label>
-                <label className={style.value} htmlFor="plaintiff.legalIsMailing">
-                  <Field type="checkbox" id="plaintiff.legalIsMailing" name="plaintiff.legalIsMailing" />
-                  Почтовый адрес совпадает
-                  <br />с юридическим
-                </label>
-                <label className={style.value} htmlFor="plaintiff.mailing_address">
-                  Почтовый адрес
-                  <Field
-                    type="text"
-                    id="plaintiff.mailing_address"
-                    name="plaintiff.mailing_address"
-                    className={style.field}
-                  />
-                </label>
-                <label className={style.value} htmlFor="plaintiff.kpp">
-                  КПП
-                  <Field type="text" id="plaintiff.kpp" name="plaintiff.kpp" />
-                </label>
-                <label className={style.value} htmlFor="plaintiff.pc">
-                  РС
-                  <Field type="text" id="plaintiff.pc" name="plaintiff.pc" />
-                </label>
-                <label className={style.value} htmlFor="plaintiff.bank">
-                  Банк
-                  <Field type="text" id="plaintiff.bank" name="plaintiff.bank" />
-                </label>
-                <label className={style.value} htmlFor="plaintiff.bic">
-                  БИК
-                  <Field type="text" id="plaintiff.bic" name="plaintiff.bic" />
-                </label>
-                <label className={style.value} htmlFor="plaintiff.kc">
-                  К/с
-                  <Field type="text" id="plaintiff.kc" name="plaintiff.kc" />
-                </label>
-              </div>
-            )}
           </Form>
           <Form className={style.form}>
             <label className={style.value} htmlFor="date">
@@ -245,48 +156,7 @@ export const FormBlock: FC<FormBlockType> = ({ setIsActive }: FormBlockType) => 
                      }}/>
               Юридическое лицо
             </label>
-            {!defendant ? (
-                    <div>
-                      <label className={style.value} htmlFor="defendant.lastname">
-                        Фамилия
-                        <Field type="text" id="defendant.lastname" name="defendant.lastname" />
-                      </label>
-                      <label className={style.value} htmlFor="defendant.name">
-                        Имя
-                        <Field type="text" id="defendant.name" name="defendant.name" />
-                      </label>
-                      <label className={style.value} htmlFor="defendant.surname">
-                        Отчество
-                        <Field type="text" id="defendant.surname" name="defendant.surname" />
-                      </label>
-                      <label className={style.value} htmlFor="defendant.birthday">
-                        Дата рождения
-                        <Field type="date" id="defendant.birthday" name="defendant.birthday" />
-                      </label>
-                      <label className={style.value} htmlFor="defendant.reg_address">
-                        Адрес регистрации
-                        <Field
-                            type="text"
-                            id="defendant.reg_address"
-                            name="defendant.reg_address"
-                            className={style.field}
-                        />
-                      </label>
-                      <label className={style.value} htmlFor="defendant.res_address">
-                        Адрес проживания
-                        <Field
-                            type="text"
-                            id="defendant.res_address"
-                            name="defendant.res_address"
-                            className={style.field}
-                        />
-                      </label>
-                      <label className={style.value} htmlFor="defendant.phone">
-                        Телефон
-                        <Field type="text" id="defendant.phone" name="defendant.phone" />
-                      </label>
-                    </div>
-                ) : ( <div>
+              <div>
             <label className={style.value} htmlFor="defendant.inn">
               ИНН
               <Field type="text" id="defendant.inn" name="defendant.inn" />
@@ -342,7 +212,7 @@ export const FormBlock: FC<FormBlockType> = ({ setIsActive }: FormBlockType) => 
               К/с
               <Field type="text" id="defendant.kc" name="defendant.kc" />
             </label>
-            </div>)}
+            </div>)
             <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
               <button
                 type="button"

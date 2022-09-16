@@ -29,7 +29,7 @@ export interface IDeleteJudicialCases {
 
 export interface IAddJudicialCases {
   type: ActionType.ADD_JUDICIAL_CASES;
-  payload: { values: IJudicialCasesItem };
+  payload: IJudicialCasesItem;
 }
 
 
