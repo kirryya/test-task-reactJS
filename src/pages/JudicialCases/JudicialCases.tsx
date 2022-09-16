@@ -89,7 +89,7 @@ const JudicialCases = ({
           <div className='judicialcases-content-wrapper'>
             <div className='judicialcases-header'>
               <div className='judicialcases-header-search'>
-                <div style={{display: 'flex'}}>
+                <div style={{display: 'flex', justifyContent:'center'}}>
                 <span className='me-2'>Поиск по делам : </span>
                 <input
                   className='judicialcases-header-search-input'

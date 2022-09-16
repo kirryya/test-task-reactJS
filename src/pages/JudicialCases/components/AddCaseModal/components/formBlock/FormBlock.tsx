@@ -69,16 +69,17 @@ export const FormBlock: FC<FormBlockType> = ({ setIsActive }: FormBlockType) => 
         }}
       >
         <div
-          style={{ display: 'flex', justifyContent: 'space-around', minWidth: '700px' }}
+          style={{ display: 'flex', justifyContent: 'space-around', minWidth: '800px' }}
         >
-          <Form className={style.form} style={{ marginBottom: '30px' }}>
+          <Form className={style.form} >
+            <div className='modal-body '>
             <label className={style.value} htmlFor="uid">
               УИД
-              <Field type="text" id="uid" name="uid" />
+              <Field type="text" name="uid" />
             </label>
             <label className={style.value} htmlFor="number">
               Номер
-              <Field type="text" id="number" name="number" />
+              <Field type="text" name="number" />
             </label>
 
             <label className={style.value} htmlFor="plaintiff">
@@ -99,7 +100,7 @@ export const FormBlock: FC<FormBlockType> = ({ setIsActive }: FormBlockType) => 
               <div>
                 <label className={style.value} htmlFor="plaintiff.lastname">
                   Фамилия
-                  <Field type="text" id="plaintiff.lastname" name="plaintiff.lastname" />
+                  <Field type="text" name="plaintiff.lastname" />
                 </label>
                 <label className={style.value} htmlFor="plaintiff.name">
                   Имя
@@ -136,8 +137,10 @@ export const FormBlock: FC<FormBlockType> = ({ setIsActive }: FormBlockType) => 
                   <Field type="text" id="plaintiff.phone" name="plaintiff.phone" />
                 </label>
               </div>
+            </div>
           </Form>
-          <Form className={style.form}>
+          <Form >
+            <div className='modal-body '>
             <label className={style.value} htmlFor="date">
               <b>Дата:</b>
               <Field type="date" id="date" name="date" size="200" />
@@ -225,6 +228,7 @@ export const FormBlock: FC<FormBlockType> = ({ setIsActive }: FormBlockType) => 
               <Button type="submit" style={{ marginTop: '10px' }}  color='primary'>
                 Создать
               </Button>
+            </div>
             </div>
           </Form>
         </div>
