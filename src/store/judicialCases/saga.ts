@@ -73,7 +73,6 @@ export function* watchDeleteJudicialCases() {
   yield takeEvery(ActionType.DELETE_JUDICIAL_CASES, deleteJudicialCases);
 }
 export function* watchAddJudicialCases() {
-  // @ts-ignore
   yield takeEvery(ActionType.ADD_JUDICIAL_CASES, addJudicialCase);
 }
 

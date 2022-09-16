@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Row, Col } from 'reactstrap';
+import {Row, Col, Button} from 'reactstrap';
 import { loadJudicialCases } from 'store/actions';
 import { RootState } from 'store/reducers';
 import { Breadcrumbs, Table } from 'components';
@@ -89,6 +89,7 @@ const JudicialCases = ({
           <div className='judicialcases-content-wrapper'>
             <div className='judicialcases-header'>
               <div className='judicialcases-header-search'>
+                <div style={{display: 'flex'}}>
                 <span className='me-2'>Поиск по делам : </span>
                 <input
                   className='judicialcases-header-search-input'
@@ -96,10 +97,11 @@ const JudicialCases = ({
                   value={searchInput}
                   onChange={searchInputHandler}
                 />
+                </div>
                 <div>
-                  <button type="button" onClick={onModalWindowClick}>
+                  <Button type="button" onClick={onModalWindowClick} color='primary' style={{minWidth: '230px'}} >
                     Создать дело
-                  </button>
+                  </Button>
 
                   <UniverseModalWindow isActive={isActive} setActive={setIsActive} areaId={areaId}>
                     <AddData setIsActive={setIsActive} />

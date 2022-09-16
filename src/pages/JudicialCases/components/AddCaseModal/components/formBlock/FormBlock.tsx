@@ -8,6 +8,7 @@ import {FormBlockType} from './types';
 import {useDispatch} from "react-redux";
 import {IJudicialCasesItemType} from "store/judicialCases/types";
 import {addJudicialCases} from "store/judicialCases/actions";
+import {Button} from "reactstrap";
 
 export type InitialValueType = {
   uid: string,
@@ -212,18 +213,18 @@ export const FormBlock: FC<FormBlockType> = ({ setIsActive }: FormBlockType) => 
               К/с
               <Field type="text" id="defendant.kc" name="defendant.kc" />
             </label>
-            </div>)
+            </div>
             <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-              <button
+              <Button
                 type="button"
                 onClick={() => setIsActive(false)}
                 style={{ marginTop: '10px', marginRight: '10px' }}
               >
                 Отмена
-              </button>
-              <button type="submit" style={{ marginTop: '10px' }}>
+              </Button>
+              <Button type="submit" style={{ marginTop: '10px' }}  color='primary'>
                 Создать
-              </button>
+              </Button>
             </div>
           </Form>
         </div>
