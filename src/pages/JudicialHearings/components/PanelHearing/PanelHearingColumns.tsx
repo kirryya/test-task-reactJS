@@ -5,8 +5,8 @@ import { CellListIconLink } from 'components';
 import { ButtonOpenHearing } from '../ButtonOpenHearing';
 import { VALUE_RESULT_JUDICIAL_HEARINGS } from './PanelHearingConstants';
 import ButtonDeleteHearing from '../ButtonDeleteHearing/ButtonDeleteHearing';
-import HearingStatusDropdown from "../HearingStatusDropdown/HearingStatusDropdown";
-import React from "react";
+import HearingStatusDropdown from '../HearingStatusDropdown/HearingStatusDropdown';
+import React from 'react';
 
 export const columnsTable = [
   {
@@ -52,7 +52,7 @@ export const columnsTable = [
           >
             {VALUE_RESULT_JUDICIAL_HEARINGS[cellContent]}
           </Badge>
-          <i className='bx bx-chevron-down font-size-18'/>
+          <i className='bx bx-chevron-down font-size-18' />
           {cellContent === 'planned' && (
             <div className='p-2'>
               Дата: {row.date} <br />

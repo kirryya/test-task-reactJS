@@ -1,4 +1,7 @@
-import {IJudicialHearingData, ModesHearing} from "store/judicialHearing/types";
+import {
+  IJudicialHearingData,
+  ModesHearing,
+} from 'store/judicialHearing/types';
 
 export interface IHearingStatusDropdown {
   children: React.ReactNode;

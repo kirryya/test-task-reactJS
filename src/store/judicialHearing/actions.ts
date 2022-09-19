@@ -7,7 +7,8 @@ import {
   IJudicialCaseData,
   IDataLoadFileRequest,
   IParticipants,
-  IDataLoadDocxFileRequest, IDocument,
+  IDataLoadDocxFileRequest,
+  IDocument,
 } from './types';
 export type History = RouteComponentProps['history'];
 
@@ -104,7 +105,7 @@ export const updateModeHearing = (mode: ModesHearing) => ({
 export const updateHearingStatus = (status: ModesHearing) => ({
   type: ActionType.UPDATE_HEARING_STATUS,
   payload: status,
-})
+});
 
 //----
 export const updateParticipants = (participants: IParticipants[]) => ({
@@ -114,22 +115,25 @@ export const updateParticipants = (participants: IParticipants[]) => ({
 
 //----
 
-export const setDocument = (document: IDocument | undefined, documentText: string | undefined = undefined) => ({
+export const setDocument = (
+  document: IDocument | undefined,
+  documentText: string | undefined = undefined,
+) => ({
   type: ActionType.SET_DOCUMENT,
-  payload: {document, documentText}
+  payload: { document, documentText },
 });
 
 export const setSelectedDocument = (id: number | null) => ({
   type: ActionType.SET_SELECTED_DOCUMENT,
-  payload: id
-})
+  payload: id,
+});
 
 export const updateDocumentText = (text: Blob, id: number) => ({
   type: ActionType.UPDATE_DOCUMENT_TEXT,
-  payload: { text, id }
-})
+  payload: { text, id },
+});
 
 export const deleteDocument = (id: number) => ({
   type: ActionType.DELETE_DOCUMENT,
-  payload: id
-})
+  payload: id,
+});

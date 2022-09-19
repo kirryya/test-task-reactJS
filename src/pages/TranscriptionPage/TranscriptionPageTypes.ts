@@ -5,7 +5,7 @@ import {
 import { IActionStatusReducer } from 'store/actionStatus/types';
 import { IJudicialHearingData } from 'store/judicialHearing/types';
 import { TranscribationStatuses } from 'store/transcription/types';
-import { Statuses } from "pages/AudioProcessing/components/TransitPanel/TransitPanelTypes";
+import { Statuses } from 'pages/AudioProcessing/components/TransitPanel/TransitPanelTypes';
 
 export interface ITranscriptionPage {
   soundFilePath: string;

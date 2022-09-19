@@ -161,7 +161,7 @@ const AUTH_PROTECTED_ROUTES = {
     pathTransition: '/documents/edit/:documentId',
     component: EditTemplates,
     userType: '',
-    icon: 'bx-calendar'
+    icon: 'bx-calendar',
   },
 
   DEFAULT: {

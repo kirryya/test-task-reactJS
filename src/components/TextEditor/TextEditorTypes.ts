@@ -1,5 +1,5 @@
 import React from 'react';
-import {IJudicialHearingData} from "store/judicialHearing/types";
+import { IJudicialHearingData } from 'store/judicialHearing/types';
 
 export interface ITextEditorTypes {
   setEditorText: React.Dispatch<React.SetStateAction<string>>;

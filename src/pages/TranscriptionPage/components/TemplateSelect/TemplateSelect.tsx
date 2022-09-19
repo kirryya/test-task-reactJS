@@ -1,6 +1,6 @@
-import React, {useEffect} from 'react';
-import {Input} from 'reactstrap';
-import {ITemplateSelect} from "./TemplateSelectTypes";
+import React, { useEffect } from 'react';
+import { Input } from 'reactstrap';
+import { ITemplateSelect } from './TemplateSelectTypes';
 
 export default function TemplateSelect({
   selectedTemplate,
@@ -28,15 +28,21 @@ export default function TemplateSelect({
       <Input
         type='select'
         className='form-select me-4 doc-file-select'
-        value={selectedTemplate ? selectedTemplate : selectedDocument ? 0 - selectedDocument : 0}
+        value={
+          selectedTemplate
+            ? selectedTemplate
+            : selectedDocument
+            ? 0 - selectedDocument
+            : 0
+        }
         onChange={e => {
-          let value = parseInt(e.target.value)
+          let value = parseInt(e.target.value);
           if (value > 0) {
             setSelectedTemplate(value);
-            setSelectedDocument(null)
+            setSelectedDocument(null);
           } else {
-            setSelectedDocument(Math.abs(value))
-            setSelectedTemplate(undefined)
+            setSelectedDocument(Math.abs(value));
+            setSelectedTemplate(undefined);
           }
         }}
       >
@@ -48,11 +54,15 @@ export default function TemplateSelect({
               </option>
             ))}
         </optgroup>
-        {documents && documents.length &&
+        {documents && documents.length && (
           <optgroup label='Сохранённые файлы'>
-            {documents.map((doc, index) => <option value={0 - doc.id} key={`${doc.name}_${index}`}>{doc.name}</option>)}
+            {documents.map((doc, index) => (
+              <option value={0 - doc.id} key={`${doc.name}_${index}`}>
+                {doc.name}
+              </option>
+            ))}
           </optgroup>
-        }
+        )}
       </Input>
     </div>
   );

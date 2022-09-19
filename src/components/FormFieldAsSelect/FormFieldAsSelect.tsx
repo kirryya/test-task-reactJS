@@ -1,4 +1,4 @@
-import {Field} from 'formik';
+import { Field } from 'formik';
 import { IFormFieldAsSelectProps } from './FormFieldAsSelectTypes';
 
 const FormFieldAsSelect = (props: IFormFieldAsSelectProps) => {

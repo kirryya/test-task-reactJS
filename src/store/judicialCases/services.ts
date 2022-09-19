@@ -1,6 +1,6 @@
 import axiosApi from 'utils/api_helper';
-import {ENDPOINTS, SERVER_URL} from 'constants/api_endpoints';
-import {IJudicialCasesItem} from './types';
+import { ENDPOINTS, SERVER_URL } from 'constants/api_endpoints';
+import { IJudicialCasesItem } from './types';
 
 export default class JudicialCases {
   static async getJudicialCases(areaId: number) {

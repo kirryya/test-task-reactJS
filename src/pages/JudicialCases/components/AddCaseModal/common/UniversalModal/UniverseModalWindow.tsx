@@ -4,13 +4,10 @@ import { ReturnComponentType } from '../../types';
 import style from './styles/UniverseModal.module.css';
 import { UniverseModalWindowType } from './types';
 
-
-
 export const UniverseModalWindow: FC<UniverseModalWindowType> = ({
   isActive,
   setActive,
   children,
-                                                                   areaId
 }: UniverseModalWindowType): ReturnComponentType => {
   const onCloseModalWindowClick = (): void => {
     setActive(false);
@@ -19,19 +16,21 @@ export const UniverseModalWindow: FC<UniverseModalWindowType> = ({
   return (
     <div
       className={isActive ? `${style.modal} ${style.active}` : style.modal}
-      role="button"
+      role='button'
       tabIndex={0}
       onClick={onCloseModalWindowClick}
-      aria-hidden="true"
+      aria-hidden='true'
     >
       <div
         className={
-          isActive ? `${style.modal__content} ${style.active}` : style.modal__content
+          isActive
+            ? `${style.modal__content} ${style.active}`
+            : style.modal__content
         }
-        role="button"
+        role='button'
         tabIndex={0}
         onClick={e => e.stopPropagation()}
-        aria-hidden="true"
+        aria-hidden='true'
       >
         {children}
       </div>

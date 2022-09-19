@@ -1,8 +1,6 @@
 import { ActionType } from './actionTypes';
 import { IJudicialCasesItem } from './types';
-import {
-  InitialValueType
-} from "pages/JudicialCases/components/AddCaseModal/components/formBlock/FormBlock";
+import { InitialValueType } from 'pages/JudicialCases/components/AddCaseModal/components/formBlock/FormBlock';
 
 export const setSelectedJudicialCaseId = (caseId: string) => ({
   type: ActionType.SET_SELECTED_JUDICIAL_CASE_ID,
@@ -24,7 +22,7 @@ export const deleteJudicialCases = (id: number) => ({
   payload: id,
 });
 
-export const addJudicialCases = (values: InitialValueType ) => ({
+export const addJudicialCases = (values: InitialValueType) => ({
   type: ActionType.ADD_JUDICIAL_CASES,
   payload: values,
 });

@@ -4,7 +4,7 @@ import {
   IDocTemplateBlock,
   IDocTemplateGet,
 } from 'store/docTemplates/types';
-import {IDocument, SetDocument} from "store/judicialHearing/types";
+import { IDocument, SetDocument } from 'store/judicialHearing/types';
 
 export interface IEditTemplates extends RouteComponentProps {
   selectedTemplate: string;

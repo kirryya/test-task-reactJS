@@ -12,7 +12,11 @@ export default function BlockButton({
     if (editor) {
       let content = editor.data.processor.toView(item.content);
       content = editor.data.toModel(content);
-      editor.execute('insertSimpleBox', content, item.title === 'Автоматическая транскрибация');
+      editor.execute(
+        'insertSimpleBox',
+        content,
+        item.title === 'Автоматическая транскрибация',
+      );
     } else {
       console.error('Editor not loaded');
     }

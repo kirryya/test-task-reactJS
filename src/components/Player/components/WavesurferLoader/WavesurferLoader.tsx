@@ -1,4 +1,4 @@
-import {Spinner} from "reactstrap";
+import { Spinner } from 'reactstrap';
 
 export default function WavesurferLoader() {
   return (
@@ -6,5 +6,5 @@ export default function WavesurferLoader() {
       <p>Аудиофайл загружается... </p>
       <Spinner size='sm' style={{ width: '0.625rem', height: '0.625rem' }} />
     </div>
-  )
+  );
 }

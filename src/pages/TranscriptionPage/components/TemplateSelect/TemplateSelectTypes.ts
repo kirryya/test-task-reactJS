@@ -1,5 +1,5 @@
-import {IDocTemplateGet} from "store/docTemplates/types";
-import {IDocument} from "store/judicialHearing/types";
+import { IDocTemplateGet } from 'store/docTemplates/types';
+import { IDocument } from 'store/judicialHearing/types';
 
 export interface ITemplateSelect {
   selectedTemplate: number | null;

@@ -36,7 +36,7 @@ function TextEditor({
               // Insert the toolbar before the editable area.
               editorToolbar.current?.prepend(editor.ui.view.toolbar.element);
               setEditor(editor);
-              editor.setData(initialText)
+              editor.setData(initialText);
             }}
             onError={({ willEditorRestart }) => {
               // If the editor is restarted, the toolbar element will be created once again.

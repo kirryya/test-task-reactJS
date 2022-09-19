@@ -16,7 +16,7 @@ import SaveModalDoc from '../SaveDocModal/SaveDocModal';
 import { getCaseAndHearingData } from 'store/judicialHearing/selectors';
 import { IEditDoc } from './EditDocTypes';
 import { HTML_ENCODING } from 'constants/app_сonstants';
-import { Button } from "reactstrap";
+import { Button } from 'reactstrap';
 
 // Функция для загрузки blob файла
 
@@ -66,8 +66,12 @@ const EditDoc = ({
   documentText,
   currentDocument,
 }: IEditDoc) => {
-  const [editorText, setEditorText] = useState(currentTemplate?.content || documentText || '');
-  const [initialText, setInitialText] = useState(currentTemplate?.content || documentText || '');
+  const [editorText, setEditorText] = useState(
+    currentTemplate?.content || documentText || '',
+  );
+  const [initialText, setInitialText] = useState(
+    currentTemplate?.content || documentText || '',
+  );
   const [isSaveModalOpen, setIsSaveModalOpen] = useState(false);
 
   useEffect(() => {
@@ -135,19 +139,24 @@ const EditDoc = ({
                   documents={caseAndHearingData?.documents}
                 />
                 <Link
-                  to={`/${
-                    currentTemplate ? 'templates' : 'documents'
-                  }/edit/${
+                  to={`/${currentTemplate ? 'templates' : 'documents'}/edit/${
                     currentTemplate?.template_id || currentDocument?.id
                   }`}
                   className={`${!templates.length ? 'disabled' : ''}`}
                 >
-                  <Button color='primary' className='w-md d-flex justify-content-center' disabled={!templates.length}>
+                  <Button
+                    color='primary'
+                    className='w-md d-flex justify-content-center'
+                    disabled={!templates.length}
+                  >
                     Редактировать
                   </Button>
                 </Link>
                 <Link to={'/templates/add'}>
-                  <Button color='primary' className='w-lg d-flex justify-content-center'>
+                  <Button
+                    color='primary'
+                    className='w-lg d-flex justify-content-center'
+                  >
                     Добавить шаблон
                   </Button>
                 </Link>
@@ -197,7 +206,8 @@ const mapStateToProps = (state: RootState) => {
   const { userId } = state.Profile;
   const { templates, currentTemplate, selectedTemplate } = state.DocTemplates;
   const caseAndHearingData: any = getCaseAndHearingData(state);
-  const { selectedDocument, documentText, currentDocument } = state.JudicialHearing;
+  const { selectedDocument, documentText, currentDocument } =
+    state.JudicialHearing;
 
   return {
     userId,

@@ -1,9 +1,9 @@
-import {all, call, fork, put, select, takeEvery} from 'redux-saga/effects';
-import {AxiosResponse} from 'axios';
-import {getMessageFromError} from 'utils/app_helper';
-import {WrapResponseGetListJudicialCases} from './types';
-import {setActionStatus} from '../actions';
-import {getAreaId} from '../selectors';
+import { all, call, fork, put, select, takeEvery } from 'redux-saga/effects';
+import { AxiosResponse } from 'axios';
+import { getMessageFromError } from 'utils/app_helper';
+import { WrapResponseGetListJudicialCases } from './types';
+import { setActionStatus } from '../actions';
+import { getAreaId } from '../selectors';
 
 import {
   ActionType,
@@ -11,7 +11,7 @@ import {
   IDeleteJudicialCases,
   ILoadJudicialCases,
 } from './actionTypes';
-import {setJudicialCases} from './actions';
+import { setJudicialCases } from './actions';
 import JudicialCases from './services';
 
 function* fetchJudicialCases({ payload }: ILoadJudicialCases) {
@@ -56,12 +56,12 @@ function* addJudicialCase({ payload }: IAddJudicialCases) {
 
     yield put(setJudicialCases(fetchData.data.data));
   } catch (error) {
-    console.log(error)
+    console.log(error);
     yield put(
-        setActionStatus({
-          message: getMessageFromError(error),
-          status: 'error',
-        }),
+      setActionStatus({
+        message: getMessageFromError(error),
+        status: 'error',
+      }),
     );
   }
 }

@@ -1,5 +1,5 @@
 import { ReactChild } from 'react';
-import { Statuses } from "./components/TransitPanel/TransitPanelTypes";
+import { Statuses } from './components/TransitPanel/TransitPanelTypes';
 
 export interface IAudioProcessingProps {
   children: ReactChild;

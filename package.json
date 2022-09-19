@@ -44,7 +44,7 @@
     "web-vitals": "^1.0.1",
     "yup": "^0.32.11"
   },
- "resolutions": {
+  "resolutions": {
     "@types/react": "17.0.44"
   },
   "scripts": {

@@ -35,7 +35,6 @@ const TransitPanel = (props: ITransitPanelProps) => {
     };
   }, [cancelStatusPolling, setDefDataStatusAudio, getStatusAudioRecording]);
 
-
   return (
     <Row>
       <Col xs='12'>

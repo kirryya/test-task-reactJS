@@ -20,7 +20,8 @@
 .table thead {
   vertical-align: inherit;
 
-  tr th.sortable .order, tr th.sortable .react-bootstrap-table-sort-order {
+  tr th.sortable .order,
+  tr th.sortable .react-bootstrap-table-sort-order {
     margin-left: 8px;
   }
 }

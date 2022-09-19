@@ -160,5 +160,7 @@ export default function Hotkeys({
     },
   };
 
-  return isPlayerReady ? <GlobalHotKeys keyMap={keyMap} handlers={handlers} allowChanges={true} /> : null;
+  return isPlayerReady ? (
+    <GlobalHotKeys keyMap={keyMap} handlers={handlers} allowChanges={true} />
+  ) : null;
 }

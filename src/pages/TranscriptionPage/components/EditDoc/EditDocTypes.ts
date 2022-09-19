@@ -1,5 +1,8 @@
-import {IDocument, IJudicialAndHearingData} from "store/judicialHearing/types";
-import {IDocTemplateGet} from "store/docTemplates/types";
+import {
+  IDocument,
+  IJudicialAndHearingData,
+} from 'store/judicialHearing/types';
+import { IDocTemplateGet } from 'store/docTemplates/types';
 
 export interface IEditDoc {
   caseAndHearingData: IJudicialAndHearingData;
