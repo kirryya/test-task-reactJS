@@ -1,6 +1,5 @@
-export type MyFormValues = {
-  name: string;
-  uid: string;
+export type PurposeType = {
+ title: string;
 };
 
 export type FormBlockType = {

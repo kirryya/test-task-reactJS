@@ -9,6 +9,8 @@ import { useDispatch } from 'react-redux';
 import { IJudicialCasesItemType } from 'store/judicialCases/types';
 import { addJudicialCases } from 'store/judicialCases/actions';
 import { Button } from 'reactstrap';
+import { Company }  from '..';
+import { People } from '..';
 
 export type InitialValueType = {
   uid: string;
@@ -111,117 +113,7 @@ export const FormBlock: FC<FormBlockType> = ({
                 </div>
               </label>
 
-              {plaintiffCompany ? (
-                <div>
-                  <label className={style.value} htmlFor='plaintiff.inn'>
-                    ИНН
-                    <Field type='text' name='plaintiff.inn' />
-                  </label>
-                  <label className={style.value} htmlFor='plaintiff.ogrn'>
-                    ОГРН
-                    <Field type='text' name='plaintiff.ogrn' />
-                  </label>
-                  <label className={style.value} htmlFor='plaintiff.company'>
-                    Название компании
-                    <Field type='text' name='plaintiff.company' />
-                  </label>
-                  <label
-                    className={style.value}
-                    htmlFor='plaintiff.legal_address'
-                  >
-                    Юридический адрес
-                    <Field
-                      type='text'
-                      name='plaintiff.legal_address'
-                      className={style.field}
-                    />
-                  </label>
-                  <label
-                    className={style.value}
-                    htmlFor='plaintiff.legalIsMailing'
-                  >
-                    <Field type='checkbox' name='plaintiff.legalIsMailing' />
-                    Почтовый адрес совпадает
-                    <br />с юридическим
-                  </label>
-                  <label
-                    className={style.value}
-                    htmlFor='plaintiff.mailing_address'
-                  >
-                    Почтовый адрес
-                    <Field
-                      type='text'
-                      name='plaintiff.mailing_address'
-                      className={style.field}
-                    />
-                  </label>
-                  <label className={style.value} htmlFor='plaintiff.kpp'>
-                    КПП
-                    <Field type='text' name='plaintiff.kpp' />
-                  </label>
-                  <label className={style.value} htmlFor='plaintiff.pc'>
-                    РС
-                    <Field type='text' id='plaintiff.pc' name='plaintiff.pc' />
-                  </label>
-                  <label className={style.value} htmlFor='plaintiff.bank'>
-                    Банк
-                    <Field type='text' name='plaintiff.bank' />
-                  </label>
-                  <label className={style.value} htmlFor='plaintiff.bic'>
-                    БИК
-                    <Field type='text' name='plaintiff.bic' />
-                  </label>
-                  <label className={style.value} htmlFor='plaintiff.kc'>
-                    К/с
-                    <Field type='text' name='plaintiff.kc' />
-                  </label>
-                </div>
-              ) : (
-                <div>
-                  <label className={style.value} htmlFor='plaintiff.lastname'>
-                    Фамилия
-                    <Field type='text' name='plaintiff.lastname' />
-                  </label>
-                  <label className={style.value} htmlFor='plaintiff.name'>
-                    Имя
-                    <Field type='text' name='plaintiff.name' />
-                  </label>
-                  <label className={style.value} htmlFor='plaintiff.surname'>
-                    Отчество
-                    <Field type='text' name='plaintiff.surname' />
-                  </label>
-                  <label className={style.value} htmlFor='plaintiff.birthday'>
-                    Дата рождения
-                    <Field type='date' name='plaintiff.birthday' />
-                  </label>
-                  <label
-                    className={style.value}
-                    htmlFor='plaintiff.reg_address'
-                  >
-                    Адрес регистрации
-                    <Field
-                      type='text'
-                      name='plaintiff.reg_address'
-                      className={style.field}
-                    />
-                  </label>
-                  <label
-                    className={style.value}
-                    htmlFor='plaintiff.res_address'
-                  >
-                    Адрес проживания
-                    <Field
-                      type='text'
-                      name='plaintiff.res_address'
-                      className={style.field}
-                    />
-                  </label>
-                  <label className={style.value} htmlFor='phone'>
-                    Телефон
-                    <Field type='text' name='plaintiff.phone' />
-                  </label>
-                </div>
-              )}
+              {plaintiffCompany ?  <Company title="plaintiff" />  : <People title= "plaintiff" />}
             </div>
           </Form>
           <Form>
@@ -255,119 +147,9 @@ export const FormBlock: FC<FormBlockType> = ({
                 </div>
               </label>
 
-              {defendantCompany ? (
-                <div>
-                  <label className={style.value} htmlFor='defendant.inn'>
-                    ИНН
-                    <Field type='text' name='defendant.inn' />
-                  </label>
-                  <label className={style.value} htmlFor='defendant.ogrn'>
-                    ОГРН
-                    <Field
-                      type='text'
-                      id='defendant.ogrn'
-                      name='defendant.ogrn'
-                    />
-                  </label>
-                  <label className={style.value} htmlFor='company'>
-                    Название компании
-                    <Field type='text' name='defendant.company' />
-                  </label>
-                  <label className={style.value} htmlFor='legal_address'>
-                    Юридический адрес
-                    <Field
-                      type='data'
-                      name='defendant.legal_address'
-                      className={style.field}
-                    />
-                  </label>
-                  <label
-                    className={style.value}
-                    htmlFor='defendant.legalIsMailing'
-                  >
-                    <Field type='checkbox' name='defendant.legalIsMailing' />
-                    Почтовый адрес совпадает
-                    <br />с юридическим
-                  </label>
-                  <label
-                    className={style.value}
-                    htmlFor='defendant.mailing_address'
-                  >
-                    Почтовый адрес
-                    <Field
-                      type='text'
-                      name='defendant.mailing_address'
-                      className={style.field}
-                    />
-                  </label>
-                  <label className={style.value} htmlFor='defendant.kpp'>
-                    КПП
-                    <Field type='text' name='defendant.kpp' />
-                  </label>
-                  <label className={style.value} htmlFor='defendant.pc'>
-                    РС
-                    <Field type='text' name='defendant.pc' />
-                  </label>
-                  <label className={style.value} htmlFor='defendant.bank'>
-                    Банк
-                    <Field type='text' name='defendant.bank' />
-                  </label>
-                  <label className={style.value} htmlFor='defendant.bic'>
-                    БИК
-                    <Field type='text' name='defendant.bic' />
-                  </label>
-                  <label className={style.value} htmlFor='defendant.kc'>
-                    К/с
-                    <Field type='text' name='defendant.kc' />
-                  </label>
-                </div>
-              ) : (
-                <div>
-                  <label className={style.value} htmlFor='defendant.lastname'>
-                    Фамилия
-                    <Field type='text' name='defendant.lastname' />
-                  </label>
-                  <label className={style.value} htmlFor='defendant.name'>
-                    Имя
-                    <Field type='text' name='defendant.name' />
-                  </label>
-                  <label className={style.value} htmlFor='defendant.surname'>
-                    Отчество
-                    <Field type='text' name='defendant.surname' />
-                  </label>
-                  <label className={style.value} htmlFor='defendant.birthday'>
-                    Дата рождения
-                    <Field type='date' name='defendant.birthday' />
-                  </label>
-                  <label
-                    className={style.value}
-                    htmlFor='defendant.reg_address'
-                  >
-                    Адрес регистрации
-                    <Field
-                      type='text'
-                      name='defendant.reg_address'
-                      className={style.field}
-                    />
-                  </label>
-                  <label
-                    className={style.value}
-                    htmlFor='defendant.res_address'
-                  >
-                    Адрес проживания
-                    <Field
-                      type='text'
-                      name='defendant.res_address'
-                      className={style.field}
-                    />
-                  </label>
-                  <label className={style.value} htmlFor='defendant.phone'>
-                    Телефон
-                    <Field type='text' name='defendant.phone' />
-                  </label>
-                </div>
-              )}
+              {defendantCompany ? <Company title="defendant" />  : <People title= "defendant" /> }
               <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+
                 <Button
                   type='button'
                   onClick={() => setIsActive(false)}
