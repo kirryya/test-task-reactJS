@@ -42,7 +42,7 @@ export const Company: FC<PurposeType> = ({ title }: PurposeType): ReturnComponen
             </label>
             <label className={style.value}>
                 КПП
-                <Field type='text' name='plaintiff.kpp' />
+                <Field type='text' name={`${title}.kpp`} />
             </label>
             <label className={style.value}>
                 РС

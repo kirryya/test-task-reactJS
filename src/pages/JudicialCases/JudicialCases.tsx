@@ -108,7 +108,6 @@ const JudicialCases = ({
               <UniverseModalWindow
                 isActive={isActive}
                 setActive={setIsActive}
-                areaId={areaId}
               >
                 <AddData setIsActive={setIsActive} />
               </UniverseModalWindow>

@@ -5,12 +5,13 @@ import { Field, Form, Formik } from 'formik';
 import style from '../header/styles/Header.module.css';
 
 import { FormBlockType } from './types';
-import { useDispatch } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import { IJudicialCasesItemType } from 'store/judicialCases/types';
 import { addJudicialCases } from 'store/judicialCases/actions';
 import { Button } from 'reactstrap';
 import { Company }  from '..';
 import { People } from '..';
+import {RootState} from "store/reducers";
 
 export type InitialValueType = {
   uid: string;
@@ -19,6 +20,9 @@ export type InitialValueType = {
   defendant: IJudicialCasesItemType;
   start: string;
   end: string;
+  plaintiff_type: 0 | 1;
+  defendant_type: 0 | 1;
+  area_id: number | undefined
 };
 
 export const FormBlock: FC<FormBlockType> = ({
@@ -28,6 +32,8 @@ export const FormBlock: FC<FormBlockType> = ({
   const [defendantCompany, setDefendantCompany] = useState<boolean>(true);
 
   const dispatch = useDispatch();
+
+  const area_id = useSelector<RootState, number | undefined>( state => state.Profile?.areaId)
 
   const company = {
     inn: '',
@@ -61,6 +67,9 @@ export const FormBlock: FC<FormBlockType> = ({
     defendant: defendantCompany ? company : people,
     start: '',
     end: '',
+    plaintiff_type: 0,
+    defendant_type: 1,
+    area_id: area_id,
   };
 
   return (
@@ -86,12 +95,12 @@ export const FormBlock: FC<FormBlockType> = ({
                 УИД
                 <Field type='text' name='uid' />
               </label>
-              <label className={style.value} htmlFor='number'>
+              <label className={style.value} >
                 Номер
-                <Field type='text' name='number' />
+                <Field type='text' name='case_id' />
               </label>
 
-              <label className={style.value} htmlFor='plaintiff'>
+              <label className={style.value} >
                 <b>Истец:</b>
 
                 <div
@@ -118,13 +127,12 @@ export const FormBlock: FC<FormBlockType> = ({
           </Form>
           <Form>
             <div className='modal-body '>
-              <label className={style.value} htmlFor='date'>
+              <label className={style.value}>
                 <b>Дата:</b>
-                <Field type='date' name='date' size='200' />
+                <Field type='date' name='start' size='200' />
               </label>
               <label
                 className={style.value}
-                htmlFor='defendant'
                 style={{ marginTop: '40px' }}
               >
                 <b>Ответчик:</b>
