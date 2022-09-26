@@ -1,10 +1,23 @@
-import React, {FC} from 'react';
+import React, {FC, useState} from 'react';
 import style from '../header/styles/Header.module.css';
 import { Field } from "formik";
 import { PurposeType } from './types';
 import { ReturnComponentType } from "../../types";
 
 export const Company: FC<PurposeType> = ({ title }: PurposeType): ReturnComponentType => {
+    const [legalAddress, setLegalAddress] = useState<boolean>(false)
+    const [mailing, setMailing] = useState<string>("")
+    const [legal, setLegal] = useState<string>("")
+
+    const onMailingClick = () => {
+      setLegalAddress(!legalAddress)
+        if (legalAddress) {
+            setMailing(legal)
+        } else {
+            setMailing(mailing)
+        }
+    }
+
     return (
         <div>
             <label className={style.value} >
@@ -19,16 +32,18 @@ export const Company: FC<PurposeType> = ({ title }: PurposeType): ReturnComponen
                 Название компании
                 <Field type='text' name={`${title}.company`} />
             </label>
-            <label className={style.value} >
+            <label className={style.value}  >
                 Юридический адрес
                 <Field
                     type='text'
                     name={`${title}.legal_address`}
                     className={style.field}
+                    value={legal}
+                    onChange={(e) => {setLegal(e.currentTarget.value)}}
                 />
             </label>
-            <label className={style.value}>
-                <Field type='checkbox' name={`${title}.legalIsMailing`} />
+            <label className={style.value} onClick={onMailingClick} >
+                <Field type='checkbox' checked={legal === mailing} />
                 Почтовый адрес совпадает
                 <br />с юридическим
             </label>
@@ -38,6 +53,8 @@ export const Company: FC<PurposeType> = ({ title }: PurposeType): ReturnComponen
                     type='text'
                     name={`${title}.mailing_address`}
                     className={style.field}
+                    value={mailing}
+                    onChange={(e) => {setMailing(e.currentTarget.value)}}
                 />
             </label>
             <label className={style.value}>
